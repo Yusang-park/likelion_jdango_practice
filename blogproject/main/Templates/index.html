@@ -1,0 +1,41 @@
+<!-- 추가 -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css연결 -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <title>Document</title>
+</head>
+<body>    <div class="create">
+    <button type="submit" class="create-btn"><a href="{% url 'accounts:login' %}">로그인</a></button>
+    <button type="submit" class="create-btn"><a href="{% url 'accounts:signup' %}">회원가입</a></button>
+    <button type="submit" class="create-btn"><a href="{% url 'accounts:logout' %}">로그아웃</a></button>
+    <button type="submit" class="create-btn"><a href="{% url 'main:create' %}">글 작성</a></button>
+
+    </div>
+
+
+    <h1>My First Blog</h1>
+    
+    {% for write in all_write %}
+    <!--클래스는 object이므로 for문 필요-->
+    <div class="write">
+        <a href="{% url 'main:detail' write.id %}">
+    <div>{{write.title}}</div>
+    <div>{{write.content}}</div>
+    <div>{{write.updated_at}}</div>
+        </a>
+        <div class="update-delete">
+        <a href="{% url 'main:update' write.id %}">수정하기</a>
+        <a href="{% url 'main:delete' write.id %}">삭제하기</a>
+        </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

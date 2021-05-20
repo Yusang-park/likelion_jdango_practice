@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+    <!--Post 요청은 토큰이 반드시 필요하다-->
+        {% csrf_token %}
+        <!-- 전달받은 from을 띄운다-->
+        <!-- .as.p는 p태그로 감싸서 두줄로 출력된다. -->
+    {{create_form.as_p}}
+    <input type="submit" value="제출">
+    </form>
+</body>
+</html>
